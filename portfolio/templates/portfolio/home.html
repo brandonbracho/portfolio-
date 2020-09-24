@@ -1,0 +1,27 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+    <h1>Brandon's Portfolio</h1>
+
+    {% load static %}
+
+    <img src="{% static 'portfolio/BrandonImage.jpg' %}">
+    <br>
+    {% for project in projects %}
+    <div class="row align-items-end">
+       <div class="col">
+         <h2>{{ project.title}}</h2>
+         <p>{{project.description}}</p>
+         <img src="{{project.image.url}}" height=300 weight=300>
+         {% if project.url %}
+         <a href="{{project.url}}">Link</a>
+         {% endif %}
+       </div>
+
+
+    {% endfor %}
+    <br>
+    <a href="{% url 'blog:all_blogs' %}">Blogs</a>
+
+  {% endblock %}
